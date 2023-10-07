@@ -6,24 +6,16 @@ on:
       - main  # Replace with your repository's main branch name
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Build and deploy
+    - name: Deploy to GitHub Pages
       run: |
-        # This step depends on your specific build process.
-        # You may need to build your site here.
-        # For simple HTML/CSS sites, no build step is required.
-        # Deploy your built site to GitHub Pages.
-        git config --global user.email "you@example.com"
-        git config --global user.name "Your Name"
         git checkout main
-        git add .
-        git commit -m "Deploy to GitHub Pages"
         git push origin main:gh-pages
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
